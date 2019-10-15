@@ -25,10 +25,12 @@ for i in score_jogador:
     aposta = int(aposta)
     
     if aposta <= 0:
-        print('Aposta invalida')
-        break
+        print('Aposta invalida, aposte novamente') 
+        aposta=int(input('Quanto vc quer apostar essa rodada? '))      
+        break       
     if aposta > sum(score_jogador):
-        print('Vc faliu')
+        print('Aposta invalida, aposte novamente')
+        aposta=int(input('Quanto vc quer apostar essa rodada? '))  
         break
 
     # código das cartas do computador
@@ -76,6 +78,10 @@ for i in score_jogador:
     for i in score_jogador:
         soma+=i
     print('Vc possui R$ {0:.2f}'.format(soma))
+
+    if sum(score_jogador) <= 0:
+        print('Vc faliu')
+        break 
     
     s= open('carteira.txt','w')
     s.writelines(str(soma))
