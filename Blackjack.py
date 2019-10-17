@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Oct  2 14:43:54 2019
-
 @author: enricocosta
 """
 import random
@@ -108,7 +107,7 @@ for i in score_jogador:
             escolha = str(input('Voce deseja tirar mais uma carta? (s/n): '))
             if escolha == 's':
                 cartas_jogador.append(sorteia_carta())
-                print('Sua nova carta é: {0} '.format(cartas_jogador[-1:]))
+                print('Sua nova carta é: {0} '.format(to_string_cartas(cartas_jogador[-1:])))
                 print('Voce tem um total de: {0}'.format(conta_pontos(cartas_jogador)))
             if escolha == 'n':
                 print('O computador tem um total de: {0}'.format(conta_pontos(cartas_computador)))
@@ -243,7 +242,7 @@ for i in score_jogador:
             #jogador1 escolha das cartas e verificação.
             if escolha == 's':
                 cartas_jogador.append(sorteia_carta())
-                print('A nova  carta do jogador_1 é: {0} '.format(cartas_jogador[-1:]))
+                print('A nova  carta do jogador_1 é: {0} '.format(to_string_cartas(cartas_jogador[-1:])))
                 print('O jogador_1 tem um total de: {0}'.format(conta_pontos(cartas_jogador)))
 
                 if conta_pontos(cartas_jogador) > 21:
@@ -251,6 +250,7 @@ for i in score_jogador:
                     vitoria2=aposta2*2
                     score_jogador2.append(vitoria2)
                     print('Jogador_1 perdeu!')
+                    break
                     
 
                 if conta_pontos(cartas_jogador) == 21:
@@ -258,6 +258,7 @@ for i in score_jogador:
                     score_jogador.append(vitoria)
                     score_jogador2.append(-aposta2)
                     print('Blackjack, Jogador_1 venceu!')
+                    break
                     
 
                 while conta_pontos(cartas_jogador) <21 and conta_pontos(cartas_jogador2)<21:    
@@ -280,10 +281,13 @@ for i in score_jogador:
                             score_jogador2.append(-aposta2)
                             print('Blackjack, Jogador_1 venceu!')
                             break
-
+                    if escolha == 'n':
+                        break
+                    break
             if escolha == 'n':
                 #print('O Jogador2 tem um total de: {0}'.format(sum(cartas_jogador2)))
                 print('O jogador_1 tem um total de: {0}'.format(conta_pontos(cartas_jogador)))
+
 
             # jogador_2 escolha das cartas, e verificação.
             if escolha2 == 's':
@@ -324,9 +328,11 @@ for i in score_jogador:
                             score_jogador.append(-aposta)
                             print('Blackjack, Jogador_2 venceu!')
                             break
+                    if escolha2=='n':
+                        break
                         
                     break
-
+                
             if escolha2 == 'n':
                 #print('O Jogador_1 tem um total de: {0}'.format(sum(cartas_jogador)))
                 print('O jogador_2 tem um total de: {0}'.format(conta_pontos(cartas_jogador2)))
@@ -380,4 +386,4 @@ for i in score_jogador:
 
         break
 
-    break  
+    break 
